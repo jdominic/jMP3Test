@@ -1,4 +1,4 @@
 jMP3Test
 ========
 
-java MP3 library
+Java MP3 file library
