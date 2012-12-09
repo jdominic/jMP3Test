@@ -2,9 +2,17 @@ import java.io.*;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		//searchDir(new File("test_files"));
-		MP3.parseMP3("test_files/Kalimba.mp3");
+		try {
+			MP3 mp3 = new MP3("test_files/Kalimba.mp3");
+			if(mp3 != null) {
+				System.out.println("Getting frames");
+				mp3.getFrames();
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void searchDir(File dir) {
@@ -18,8 +26,11 @@ public class Main {
 		if(file.getName().endsWith(".mp3")) {
 			System.out.println(file.getName());
 			try {
-				MP3 mp3 = MP3.parseMP3(file.getPath());
-				if(mp3 != null) mp3.getFrames();
+				MP3 mp3 = new MP3(file.getPath());
+				if(mp3 != null) {
+					System.out.println("Getting frames");
+					mp3.getFrames();
+				}
 			}
 			catch(IOException e) {
 				e.printStackTrace();
